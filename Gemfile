@@ -15,6 +15,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'pry-rails'
   gem 'spring'
   gem 'sqlite3'
   gem 'web-console', '~> 2.0'
