@@ -6,11 +6,15 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="d-flex align-items-stretch pt-5">
 
+  <%= render "layouts/navigation" %>
   <%= render "layouts/messages" %>
 
-  <%= yield %>
+  <div class="container d-flex flex-column align-items-stretch w-100 pt-5">
+    <%= yield %>
+    <%= render "layouts/footer" %>
+  </div>
 
 </body>
 </html>

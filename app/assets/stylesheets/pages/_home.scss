@@ -1,0 +1,35 @@
+.jumbotron {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    background-image: asset-url("cover_page.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    content: ' ';
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .z-2 {
+    position: relative;
+    z-index: 2;
+  }
+
+  h1 {
+    color: white;
+    font-size: 5rem;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    text-stroke: 1px black;
+  }
+}
+
+.btn-xlg {
+  font-size: 2rem;
+}

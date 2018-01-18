@@ -1,0 +1,9 @@
+html {
+  min-height: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+body, .container {
+  flex: 1;
+}
