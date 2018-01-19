@@ -1,24 +1,46 @@
-<% if @article.errors.any? %>
-  <h2>The following errors prevented the article from being edited</h2>
-  <ul>
-    <% @article.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+<div class="row">
+  <div class="col">
+
+    <% if @article.errors.any? %>
+      <h2>The following errors prevented the article from being edited</h2>
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
 
-<%= form_for @article do |f| %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+  </div>
+</div>
 
-<%= link_to "Back to articles listing", articles_path  %>
+<div class="row">
+  <div class="col">
+
+    <%= form_for(@article, html: { role: "form" }) do |f| %>
+      <div class="form-row justify-content-center">
+        <div class="form-group col-sm-6">
+          <%= f.label :title, class: "sr-only" %>
+          <%= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true %>
+        </div>
+      </div>
+
+      <div class="form-row justify-content-center">
+        <div class="form-group col-sm-6">
+          <%= f.label :description, class: "sr-only" %>
+          <%= f.text_area :description, rows: 8, class: "form-control col", placeholder: "Description" %>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <%= f.button type: :submit, class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+<div class="row justify-content-center mt-3 mb-1">
+  <div class="col-sm-4 text-center">
+    [<%= link_to "Back to articles listing", articles_path  %>]
+  </div>
+</div>

@@ -12,7 +12,9 @@
   <%= render "layouts/messages" %>
 
   <div class="container d-flex flex-column align-items-stretch w-100 pt-5">
-    <%= yield %>
+    <main class="d-flex flex-column">
+      <%= yield %>
+    </main>
     <%= render "layouts/footer" %>
   </div>
 
