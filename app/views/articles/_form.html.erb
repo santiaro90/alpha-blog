@@ -1,17 +1,4 @@
-<div class="row">
-  <div class="col">
-
-    <% if @article.errors.any? %>
-      <h2>The following errors prevented the article from being edited</h2>
-      <ul>
-        <% @article.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    <% end %>
-
-  </div>
-</div>
+<%= render "shared/errors", model: @article %>
 
 <div class="row">
   <div class="col">

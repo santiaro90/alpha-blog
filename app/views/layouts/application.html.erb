@@ -9,9 +9,9 @@
 <body class="d-flex align-items-stretch pt-5">
 
   <%= render "layouts/navigation" %>
-  <%= render "layouts/messages" %>
 
   <div class="container d-flex flex-column align-items-stretch w-100 pt-5">
+    <%= render "layouts/messages" %>
     <main class="d-flex flex-column">
       <%= yield %>
     </main>

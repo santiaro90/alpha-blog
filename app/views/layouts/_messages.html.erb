@@ -1,5 +1,15 @@
-<% flash.each do |name, msg| %>
-  <ul>
-    <li><%= msg %></li>
-  </ul>
-<% end %>
+<div class="row justify-content-start">
+  <div class="col-sm-auto">
+
+    <% flash.each do |name, msg| %>
+      <div class='alert alert-<%= "#{name}" %>'>
+        <span class="mr-2"><%= msg %></span>
+
+        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+
+  </div>
+</div>
