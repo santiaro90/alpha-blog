@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~> 4.0.0.beta3'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'rails', '4.2.10'
