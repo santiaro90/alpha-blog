@@ -1,7 +1,13 @@
 <article class="row justify-content-center">
 
-  <header class="col-sm-12">
-    <h1 class="text-center"><%= @article.title %></h1>
+  <header class="article-title col-sm-6 text-center">
+    <h1>
+      <%= @article.title.titlecase %>
+      <small class="article-title__subtitle mt-2 text-muted font-italic">
+        by <%= link_to @article.user.username, user_path(@article.user) %>,
+        last updated <%= time_ago_in_words(@article.updated_at) %> ago.
+      </small>
+    </h1>
   </header>
 
   <section class="mt-3 col-sm-8">
@@ -11,7 +17,7 @@
         <p><%= simple_format(@article.description) %></p>
       </div>
 
-      <div class="card-footer">
+      <footer class="card-footer">
         <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-sm btn-success" %>
         <%= link_to "Delete this article",
                     article_path(@article),
@@ -19,7 +25,7 @@
                     data: { confirm: "Are you sure?" },
                     class: "btn btn-sm btn-danger" %>
         <%= link_to "View all articles", articles_path, class: "btn btn-sm btn-primary" %>
-      </div>
+      </footer>
 
     </div>
   </section>
