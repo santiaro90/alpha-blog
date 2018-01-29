@@ -1,4 +1,8 @@
-<div class="row justify-content-center">
+<div class="row mt-4 justify-content-center">
+  <%= will_paginate articles,
+                    renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer,
+                    class: "col-sm-8 d-flex justify-content-center pagination-sm" %>
+
   <ul class="col-sm-8">
 
     <% articles.each do |a| %>
@@ -27,4 +31,8 @@
     <% end %>
 
   </ul>
+
+  <%= will_paginate articles,
+                    renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer,
+                    class: "col-sm-8 d-flex justify-content-center pagination-sm" %>
 </div>
