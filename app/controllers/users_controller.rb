@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[edit show update]
 
   def index
-    @users = User
+    @users = User.all
   end
 
   def show
