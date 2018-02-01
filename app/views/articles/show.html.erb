@@ -18,12 +18,7 @@
       </div>
 
       <footer class="card-footer">
-        <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-sm btn-success" %>
-        <%= link_to "Delete this article",
-                    article_path(@article),
-                    method: :delete,
-                    data: { confirm: "Are you sure?" },
-                    class: "btn btn-sm btn-danger" %>
+        <%= render "articles/article_actions", article: @article %>
         <%= link_to "View all articles", articles_path, class: "btn btn-sm btn-primary" %>
       </footer>
 
