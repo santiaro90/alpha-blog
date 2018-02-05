@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.user = User.first # for the moment, to not get validation errors in UI
+    @article.user = current_user
 
     if @article.save
       flash[:success] = 'Article was successfully created'
