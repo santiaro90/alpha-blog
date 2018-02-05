@@ -14,11 +14,13 @@
     </figure>
   </section>
 
-  <section class="mt-2 col-sm-8 d-flex justify-content-center">
-    <%= link_to "Edit profile",
-                edit_user_path(@user),
-                class: "btn btn-sm btn-success m-2" %>
-  </section>
+  <% if current_user == @user %>
+    <section class="mt-2 col-sm-8 d-flex justify-content-center">
+      <%= link_to "Edit profile",
+                  edit_user_path(@user),
+                  class: "btn btn-sm btn-success m-2" %>
+    </section>
+  <% end %>
 
 </section>
 
