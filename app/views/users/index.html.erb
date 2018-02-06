@@ -25,9 +25,20 @@
             <%= pluralize(user.articles.count, "articles") if user.articles %>
           </small>
 
-          <small class="d-block text-muted font-italic">
-            member since: <%= user.created_at.strftime("%m/%d/%Y") %>
+          <small class="d-block">
+            <span class="text-muted font-italic mr-1">
+              member since: <%= user.created_at.strftime("%m/%d/%Y") %>
+            </span>
+
+            <% if logged_in? && current_user.admin? %>
+              <%= link_to "Delete this user",
+                          user_path(user),
+                          method: :delete,
+                          data: { confirm: "Are you sure you want to delete this user and all his/her articles?" },
+                          class: "badge badge-danger" %>
+            <% end %>
           </small>
+
         </div>
 
       </div>

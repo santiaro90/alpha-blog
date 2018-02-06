@@ -54,6 +54,7 @@ class ArticlesController < ApplicationController
   end
 
   def require_same_user
+    return if logged_in? && current_user.admin?
     return if @article.user == current_user
 
     flash[:danger] = 'You can only edit or delete your own articles'
