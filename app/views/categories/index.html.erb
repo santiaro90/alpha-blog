@@ -1,0 +1,15 @@
+<h1 class="text-center">All categories</h1>
+
+<section class="row justify-content-center mt-2">
+
+  <div class="jumbotron col-sm-6 text-center">
+    <% @categories.each do |category| %>
+
+      <%= link_to category.name.downcase,
+        category_path(category),
+        class: "btn btn-outline-secondary" %>
+
+    <% end %>
+  </div>
+
+</section>

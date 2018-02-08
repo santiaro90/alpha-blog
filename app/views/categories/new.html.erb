@@ -1,0 +1,22 @@
+<h1 class="display-4 mb-4 text-center">Create new category</h1>
+
+<%= render "shared/errors", model: @category %>
+
+<div class="row">
+  <div class="col">
+
+    <%= form_for(@category, html: { role: "form" }) do |f| %>
+      <div class="form-row justify-content-center">
+        <div class="form-group col-sm-5">
+          <%= f.label :name, class: "sr-only" %>
+          <%= f.text_field :name, class: "form-control", placeholder: "Category name", autofocus: true %>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <%= f.button "Create", type: :submit, class: "btn btn-success" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
