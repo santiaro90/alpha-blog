@@ -16,6 +16,7 @@ gem 'turbolinks'
 
 group :development, :test do
   gem 'byebug'
+  gem 'rspec-rails', '~> 3.7'
 end
 
 group :development do
