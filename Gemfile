@@ -17,6 +17,8 @@ gem 'turbolinks'
 group :development, :test do
   gem 'byebug'
   gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 3.7'
 end
 

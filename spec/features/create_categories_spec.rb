@@ -1,16 +1,10 @@
 require 'rails_helper'
 
 feature 'Create a category' do
-  given(:admin) do
-    User.create(username: 'adminguy',
-                email: 'admin@example.com',
-                password: 'password',
-                admin: true)
-  end
+  let(:admin) { FactoryBot.create(:admin) }
 
   background do
     login_as admin, 'password'
-
     visit new_category_path
   end
 

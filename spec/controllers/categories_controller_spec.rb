@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 describe CategoriesController, type: :controller do
-  before { Category.create([{ name: 'sports' }, { name: 'health' }]) }
-
   context 'when not logged in' do
     describe '#index' do
       it 'gets all categories' do
+        FactoryBot.create_list(:category, 2)
+
         get :index
         expect(assigns(:categories).length).to eq(2)
       end
@@ -20,7 +20,7 @@ describe CategoriesController, type: :controller do
 
     describe '#show' do
       it 'gets a category' do
-        category = Category.first
+        category = FactoryBot.create(:category)
 
         get :show, id: category.id
         expect(assigns(:category)).to eq(category)
@@ -28,52 +28,46 @@ describe CategoriesController, type: :controller do
     end
   end
 
-  context 'when logged in' do
-    before do
-      admin = { username: 'adminguy', email: 'admin@example.com', password: 'password', admin: true }
-      regular = { username: 'regular', email: 'regular@example.com', password: 'password', admin: false }
-
-      User.create([admin, regular])
-    end
-
-    after(:each) { session[:user_id] = nil }
-
-    let(:admin) { User.first }
-    let(:regular) { User.last }
+  context 'when logged in as a regular user' do
+    before { session[:user_id] = FactoryBot.create(:user).id }
+    after { session[:user_id] = nil }
 
     describe '#new' do
-      it 'redirects to #index for non-admins' do
-        session[:user_id] = regular.id
+      it 'redirects to #index' do
         get :new
+        expect(response).to redirect_to(categories_path)
+      end
+    end
+
+    describe '#create' do
+      it 'redirects to #index' do
+        expect do
+          post :create, category: { name: 'programming' }
+        end.to_not(change { Category.count })
 
         expect(response).to redirect_to(categories_path)
       end
+    end
+  end
 
-      it 'gets the new page for admins' do
-        session[:user_id] = admin.id
+  context 'when logged in as an admin' do
+    before { session[:user_id] = FactoryBot.create(:admin).id }
+    after { session[:user_id] = nil }
+
+    describe '#new' do
+      it 'gets the create category page' do
         get :new
-
         expect(assigns(:category)).to be_a_new(Category)
       end
     end
 
     describe '#create' do
-      it 'redirects to #index for non-admins' do
-        session[:user_id] = regular.id
-
-        expect do
-          post :create, category: { name: 'programming' }
-        end.to_not change { Category.count }
-
-        expect(response).to redirect_to(categories_path)
-      end
-
-      it 'creates a category for admins' do
-        session[:user_id] = admin.id
-
+      it 'creates a category' do
         expect do
           post :create, category: { name: 'programming' }
         end.to change { Category.count }.by(1)
+
+        expect(Category.last.name).to eq('programming')
       end
     end
   end
